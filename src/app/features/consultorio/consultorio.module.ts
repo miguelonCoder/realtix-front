@@ -5,6 +5,11 @@ import { SidePanelComponent } from './ui/components/side-panel/side-panel.compon
 import { MapComponent } from './ui/components/map/map.component';
 import { ListComponent } from './ui/components/list/list.component';
 import { PanelSideHeaderComponent } from './ui/components/panel-side-header/panel-side-header.component';
+import { LayerConsultoriosComponent } from './ui/components/layer-consultorios/layer-consultorios.component';
+import { ConsultorioState } from './ui/services/consultorio-state.service';
+
+import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,10 +19,16 @@ import { PanelSideHeaderComponent } from './ui/components/panel-side-header/pane
     SidePanelComponent,
     MapComponent,
     ListComponent,
-    PanelSideHeaderComponent
+    PanelSideHeaderComponent,
+    LayerConsultoriosComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatInputModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    ConsultorioState
   ]
 })
 export class ConsultorioModule { }

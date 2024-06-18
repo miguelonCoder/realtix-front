@@ -8,6 +8,9 @@ import { GeoportalPageComponent } from './features/consultorio/ui/pages/geoporta
 import { ConsultorioModule } from './features/consultorio/consultorio.module';
 import { AppComponent } from './app.component';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { IConsultoriosRepository } from './features/consultorio/domain/repositories/consultorios-repository.abstract';
+import { HttpConsultoriosRepository } from './features/consultorio/infraestructure/interface-adapters/http-consultorios.repository';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,14 @@ import { RouterModule, RouterOutlet } from '@angular/router';
     AppRoutingModule,
     SharedModule,
     ConsultorioModule,
+    HttpClientModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: IConsultoriosRepository,
+      useClass: HttpConsultoriosRepository
+    }
   ],
   bootstrap: [AppComponent]
 })
