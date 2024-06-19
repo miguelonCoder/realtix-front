@@ -35,3 +35,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::-webkit-scrollbar-thumb:hover {
   background: #10b465; 
 }
+
+
+.responsive-dialog {
+  height: 100dvh;
+  width: 100vw;
+}
+
+@media only screen and (min-width: 1024px) {
+  .responsive-dialog {
+    width: 60vw;
+    height: auto;
+  }
+}

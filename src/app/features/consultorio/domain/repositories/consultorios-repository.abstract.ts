@@ -4,8 +4,8 @@ import { DistributionResponseDTO} from '../../infraestructure/DTO/response/distr
 
 export abstract class IConsultoriosRepository {
   abstract get(): Observable<ConsultorioModel[]>
-  //abstract create(newConsultorio: Omit<ConsultorioModel, 'ID'>): Observable<ConsultorioModel>
-  //abstract update(consultorio: Partial<ConsultorioModel>): Observable<ConsultorioModel>
+  abstract create(newConsultorio: Omit<ConsultorioModel, 'ID'>): Observable<ConsultorioModel>
+  abstract update(consultorio: Partial<ConsultorioModel>): Observable<ConsultorioModel>
 
   abstract getDistribution(): Observable<DistributionResponseDTO[]>
 }

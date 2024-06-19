@@ -1,0 +1,96 @@
+<form [formGroup]="form">
+  <div class="">
+    <h1 mat-dialog-title>Actualizar consultorio</h1>
+    <mat-dialog-content class="mat-typography relative overflow-hidden min-h-80 box-border">
+      <div class=" w-full overflow-y-auto flex flex-row flex-wrap items-stretch justify-between gap-4">
+
+        <h4 class="w-full pt-4">Información de contacto</h4>
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input type="number" placeholder="Identificador" matInput formControlName="Identifica" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input placeholder="Código del servicio" matInput formControlName="Código_de" required class="w-full" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input placeholder="Nombre" matInput formControlName="Nombre_de_" required />
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="w-2/5 grow" color="accent">
+          <mat-select formControlName="Nombre_del" placeholder="Nombre del servicio">
+            <mat-option [value]="'PEDIATRÍA'">
+              PEDIATRÍA
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input placeholder="Teléfono" matInput formControlName="Teléfono" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input placeholder="Dirección" matInput formControlName="Dirección" required class="w-full" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input type="email" placeholder="Correo electrónico" matInput formControlName="Correo_ele" required />
+        </mat-form-field>
+
+        <span class=" w-2/5 grow"></span>
+
+        <h4 class="w-full pt-4">Tipo</h4>
+
+        <mat-form-field appearance="outline" class="w-full " color="accent">
+          <mat-select formControlName="Tipo_de_Pr" placeholder="Tipo de prestador">
+            <mat-option [value]="'Instituciones Prestadoras de Servicios de Salud - IPS'">
+              Instituciones Prestadoras de Servicios de Salud - IPS
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full" color="accent">
+          <mat-select formControlName="Clase_de_P" placeholder="Clase de prestador">
+            <mat-option [value]="'Privada'">
+              Privada
+            </mat-option>
+            <mat-option [value]="'Pública'">
+              Pública
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <h4 class="w-full pt-4">Ubicación</h4>
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input type="number" placeholder="Código de la localidad" matInput formControlName="codigo_loc" required
+            class="w-full" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input type="number" placeholder="Código upz" matInput formControlName="codigo_upz" required />
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input type="number" placeholder="Longitud" matInput formControlName="coordenada" required class="w-full" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="w-2/5 grow">
+          <input type="number" placeholder="Latitud" matInput formControlName="coordena_1" required />
+        </mat-form-field>
+
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button color="accent" (click)="onCancel()">Cancelar</button>
+      <button mat-flat-button color="accent" [disabled]="(form.statusChanges | async) !== 'VALID'"
+        [mat-dialog-close]="value">
+        Guardar
+      </button>
+    </mat-dialog-actions>
+  </div>
+</form>

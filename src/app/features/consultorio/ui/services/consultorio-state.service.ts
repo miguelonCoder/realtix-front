@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, Subscription, tap } from "rxjs";
 import { ConsultorioModel } from "../../domain/models/consultorio.model";
 import { IConsultoriosRepository } from "../../domain/repositories/consultorios-repository.abstract";
 import { DistributionResponseDTO } from "../../infraestructure/DTO/response/distribution-response.dto";
+import { CreateConsultorioDTO } from "../../infraestructure/DTO/request/create-consultorio.dto";
 
 
 @Injectable({
@@ -55,13 +56,25 @@ export class ConsultorioState implements OnDestroy {
     this.consultorios$.next(this.AllConsultorios)
   }
 
-  // createConsultorio(): Observable<ConsultorioModel> {
+  createConsultorio(newConsultorio: Omit<ConsultorioModel, 'ID'>): Observable<ConsultorioModel> {
+    return this.repository.create(newConsultorio)
+      .pipe(
+        tap(newConsultorio => {
+          this.AllConsultorios.push(newConsultorio)
+          this.resetFilter()
+        })
+      )
+  }
 
-  // }
-
-  // updateConsultorio(): Observable<ConsultorioModel> {
-
-  // }
+  updateConsultorio(consultorio: Partial<ConsultorioModel>): Observable<ConsultorioModel> {
+    return this.repository.update(consultorio)
+      .pipe(
+        tap(newConsultorio => {
+          // this.AllConsultorios.push(newConsultorio)
+          // this.resetFilter()
+        })
+      )
+  }
 
   getDistribucion(): Observable<DistributionResponseDTO[]>{
     return this.repository.getDistribution()

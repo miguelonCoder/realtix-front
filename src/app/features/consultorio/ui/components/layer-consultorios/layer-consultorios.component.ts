@@ -69,7 +69,20 @@ export class LayerConsultoriosComponent implements AfterViewInit {
       weight: 1,
       opacity: 1,
       fillOpacity: 0.8
-    }).bindPopup(`<b>${feature.properties.Nombre_de_}</b>`);
+    }).bindPopup(`
+      <strong>Nombre: </strong><span>${feature.properties.Nombre_de_}</span><br/>
+      <strong>Identificador: </strong><span>${feature.properties.Identifica}</span><br/>
+      <strong>Código del servicio: </strong><span>${feature.properties.Código_de}</span><br/>
+      <strong>Nombre del servicio: </strong><span>${feature.properties.Nombre_del}</span><br/>
+      <strong>Teléfono: </strong><span>${feature.properties.Teléfono}</span><br/>
+      <strong>Dirección: </strong><span>${feature.properties.Dirección}</span><br/>
+      <strong>Tipo de prestador: </strong><span>${feature.properties.Tipo_de_Pr}</span><br/>
+      <strong>Clase de prestador: </strong><span>${feature.properties.Clase_de_P}</span><br/>
+      <strong>Código de la localidad: </strong><span>${feature.properties.codigo_loc}</span><br/>
+      <strong>Código UPZ: </strong><span>${feature.properties.codigo_upz}</span><br/>
+      <strong>Longitud: </strong><span>${feature.properties.coordenada}</span><br/>
+      <strong>Latitud: </strong><span>${feature.properties.coordena_1}</span><br/>
+      `);
   }
 
   private goToPoint(id: number | null){

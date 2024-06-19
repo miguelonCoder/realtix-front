@@ -22,4 +22,14 @@ export class HttpConsultoriosRepository implements IConsultoriosRepository {
   getDistribution(): Observable<DistributionResponseDTO[]> {
     return this.httpservice.get<DistributionResponseDTO[]>(`${this.API_URL}/consultorio/distribucion`)
   }
+
+  create(newConsultorio: Omit<ConsultorioModel, 'ID'>): Observable<ConsultorioModel> {
+    return this.httpservice.post<ConsultorioModel>(`${this.API_URL}/consultorio/`, newConsultorio)
+  }
+
+  
+  update(consultorio: Partial<ConsultorioModel>): Observable<ConsultorioModel> {
+    return this.httpservice.put<ConsultorioModel>(`${this.API_URL}/consultorio/`, consultorio)
+
+  }
 }

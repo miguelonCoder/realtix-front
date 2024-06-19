@@ -14,4 +14,9 @@ export class CardConsultorioComponent {
     this.select.emit(this.consultorio.ID);
   }
 
+  @Output() edit = new EventEmitter<ConsultorioModel>();
+  handleEdit() {
+    this.edit.emit(this.consultorio);
+  }
+
 }
