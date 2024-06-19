@@ -3,6 +3,7 @@ import { IConsultoriosRepository } from "../../domain/repositories/consultorios-
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { ConsultorioModel } from "../../domain/models/consultorio.model";
+import { DistributionResponseDTO } from "../DTO/response/distribution-response.dto";
 
 
 @Injectable({
@@ -16,5 +17,9 @@ export class HttpConsultoriosRepository implements IConsultoriosRepository {
 
   get(): Observable<ConsultorioModel[]> {
     return this.httpservice.get<ConsultorioModel[]>(`${this.API_URL}/consultorio`)
+  }
+
+  getDistribution(): Observable<DistributionResponseDTO[]> {
+    return this.httpservice.get<DistributionResponseDTO[]>(`${this.API_URL}/consultorio/distribucion`)
   }
 }

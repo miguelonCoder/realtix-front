@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from "@angular/core";
 import { BehaviorSubject, Observable, Subscription, tap } from "rxjs";
 import { ConsultorioModel } from "../../domain/models/consultorio.model";
 import { IConsultoriosRepository } from "../../domain/repositories/consultorios-repository.abstract";
+import { DistributionResponseDTO } from "../../infraestructure/DTO/response/distribution-response.dto";
 
 
 @Injectable({
@@ -19,8 +20,9 @@ export class ConsultorioState implements OnDestroy {
   }
 
   AllConsultorios: ConsultorioModel[]
-
   consultorios$ = new BehaviorSubject<ConsultorioModel[]>([])
+  selected$ = new BehaviorSubject<number | null>(null)
+  
   subscription = new Subscription()
 
   getConsultorios(): Observable<ConsultorioModel[]> {
@@ -60,6 +62,13 @@ export class ConsultorioState implements OnDestroy {
   // updateConsultorio(): Observable<ConsultorioModel> {
 
   // }
+
+  getDistribucion(): Observable<DistributionResponseDTO[]>{
+    return this.repository.getDistribution()
+    .pipe(
+      tap(data => console.log(data))
+    )
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe()

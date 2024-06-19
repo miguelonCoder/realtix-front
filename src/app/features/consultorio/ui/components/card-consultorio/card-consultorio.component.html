@@ -1,0 +1,20 @@
+<div class="h-52 w-full p-4 flex flex-col gap-5 rounded-md bg-neutral-900 text-neutral-400 justify-between">
+
+  <div class="flex flex-col">
+    <span class=" text-neutral-300">{{consultorio.Nombre_de_}}</span>
+
+    <div class="py-4">
+      <span class="flex-none px-2 py-1 rounded-sm bg-sky-900 text-sky-400">{{consultorio.Clase_de_P}}</span>
+    </div>
+
+    <span class=" text-xs">{{consultorio['Dirección']}}</span>
+    <span class="text-xs">{{consultorio['Teléfono']}}</span>
+    <span class="text-xs">{{consultorio.Correo_ele}}</span>
+
+  </div>
+
+  <div class="flex justify-end gap-4 items-end">
+    <button mat-button color="accent" (click)="handleSelect()">Acercar</button>
+  </div>
+
+</div>

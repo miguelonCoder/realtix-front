@@ -1,5 +1,6 @@
-<div #mapContainer class="h-full w-full">
+<div #mapContainer class="h-full w-full bg-neutral-900">
   @if((mapReady | async) === true){
     <app-layer-consultorios [mapInstance]="mapInstance" [mapReady]="mapReady"/>
+    <app-layer-distribucion [mapInstance]="mapInstance" [mapReady]="mapReady"/>
   }
 </div>

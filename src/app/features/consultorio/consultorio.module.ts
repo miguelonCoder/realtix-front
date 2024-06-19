@@ -8,8 +8,12 @@ import { PanelSideHeaderComponent } from './ui/components/panel-side-header/pane
 import { LayerConsultoriosComponent } from './ui/components/layer-consultorios/layer-consultorios.component';
 import { ConsultorioState } from './ui/services/consultorio-state.service';
 
+import {MatButtonModule} from '@angular/material/button'
 import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon'
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardConsultorioComponent } from './ui/components/card-consultorio/card-consultorio.component';
+import { LayerDistribucionComponent } from './ui/components/layer-distribucion/layer-distribucion.component';
 
 
 
@@ -20,11 +24,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     MapComponent,
     ListComponent,
     PanelSideHeaderComponent,
-    LayerConsultoriosComponent
+    LayerConsultoriosComponent,
+    CardConsultorioComponent,
+    LayerDistribucionComponent
   ],
   imports: [
     CommonModule,
     MatInputModule,
+    MatIconModule,
+    MatButtonModule,
     ReactiveFormsModule
   ],
   providers: [

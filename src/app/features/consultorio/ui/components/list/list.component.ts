@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConsultorioState } from '../../services/consultorio-state.service';
 
 @Component({
   selector: 'app-list',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './list.component.css'
 })
 export class ListComponent {
+
+  constructor(
+    public consultoriosService: ConsultorioState
+  ){}
+
+  selectConsultorio(id: number){
+    this.consultoriosService.selected$.next(id)
+  }
 
 }

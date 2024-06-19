@@ -33,11 +33,9 @@ export class LayerConsultoriosComponent implements AfterViewInit {
       }),
       map( consultorios => consultorioModelToConsultorioFeature(consultorios))
     )
-    .subscribe(
-        {
-          next:(features)=> this.renderLayer(features)
-        }
-      )
+    .subscribe((features)=> this.renderLayer(features))
+
+    this.consultorioService.selected$.subscribe(id => this.goToPoint(id))
   }
 
   renderLayer(featrureCollection: FeatureCollection<Point, Omit<ConsultorioModel, "geom">>){
@@ -48,6 +46,7 @@ export class LayerConsultoriosComponent implements AfterViewInit {
     if(this.mapInstance && featrureCollection){
       console.log(featrureCollection, this.mapInstance)
       this.layer = L.geoJSON(featrureCollection, {
+
         pointToLayer: this._pointToLayer
       })
       .addTo(this.mapInstance)
@@ -66,15 +65,26 @@ export class LayerConsultoriosComponent implements AfterViewInit {
     return L.circleMarker(latlng, {
       radius: 6,
       fillColor: '#2a6dbf',
-      color: '#2a6dbf',
+      color: 'white',
       weight: 1,
       opacity: 1,
       fillOpacity: 0.8
     }).bindPopup(`<b>${feature.properties.Nombre_de_}</b>`);
   }
 
-  private _setStyle(){
+  private goToPoint(id: number | null){
+   
+    this.layer?.eachLayer( layer => {
+      const feature: Feature<Point, Omit<ConsultorioModel, "geom">> = (layer as any).feature
+      if(feature.properties.ID === id){
+        console.log(feature)
+        this.mapInstance.setView(new L.LatLng(
+          feature.geometry.coordinates[1],
+          feature.geometry.coordinates[0],
+        ), 20)
 
+      }
+    })
   }
   
 }
