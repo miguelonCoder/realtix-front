@@ -13,7 +13,7 @@ export class HttpConsultoriosRepository implements IConsultoriosRepository {
 
   private httpservice = inject(HttpClient);
 
-  API_URL = 'https://realtix-back-kbj8gh01a-develop411s-projects.vercel.app'
+  API_URL = 'https://realtix-back.vercel.app'
 
   get(): Observable<ConsultorioModel[]> {
     return this.httpservice.get<ConsultorioModel[]>(`${this.API_URL}/consultorio`)
